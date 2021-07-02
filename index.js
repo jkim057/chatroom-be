@@ -2,26 +2,31 @@
 const express = require('express');
 const app = express();
 const http = require('http');
-const socketio = require('socket.io');
-
-// using port 3000 for development, but later on will be switching the port # into a environmental variable to protect for production.
-const PORT = process.env.PORT || 3000
-
 const server = http.createServer(app);
-const io = socketio(server)
-// const io = require('socket.io')(3000)
 const router = require('./router')
 
+const socketio = require('socket.io');
+const io = socketio(server)
+// const io = require('socket.io')(3000)
 
-// the previous example i found made the io variable require socket.io and then put a local host # there
-// the new example I found made the socket.io requirement seperate in order to be able to create server with http, which the offical documentation does as well.
+// youtube set io variable require socket.io & then put a local host # there
+// offical docs set socket.io requirement seperate in order to be able to create server with http
+
+
+
+// using local port 5678 for dev, but using PORT as env key for production.
+const PORT = process.env.PORT || 5678
+
+
+
+
 
 
 // function fires everytime client connects to server & give socket instance
 io.on('connection', socket =>{
     console.log(`User has joined. ${socket.id} `)
 
-    socket.on('disconnect', () => {
+    io.on('disconnect', () => {
         console.log('User has left.')
     })
 }) 
@@ -34,7 +39,7 @@ io.on('connection', socket =>{
 app.use(router)
 
 
-// listener
+// Runs the port
 
 server.listen(PORT, () => console.log(`Server has started on part ${PORT}`));
 
