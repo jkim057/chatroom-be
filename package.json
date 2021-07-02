@@ -1,6 +1,27 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9",
     "react-router-dom": "^5.2.0",
     "socket.io": "^4.1.2"
-  }
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "name": "chatroombe",
+  "description": "1. the frontend(client) and the backend(server) are seperate repos vs 1 overall repo with 2 directories. I'm hoping this doesn't cause an issue. 1. set up socket.io package install on backend for the server, should also give id to each client that connects",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkim057/chatroom-be.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkim057/chatroom-be/issues"
+  },
+  "homepage": "https://github.com/jkim057/chatroom-be#readme"
 }
